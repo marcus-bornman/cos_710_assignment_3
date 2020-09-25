@@ -17,13 +17,13 @@ public class PatientReader {
 		while ((line = br.readLine()) != null) {
 			String[] data = line.split(",", -1);
 
-			Temperature internalTemperature = Temperature.valueOf(data[0]);
-			Temperature surfaceTemperature = Temperature.valueOf(data[1]);
-			Saturation oxygenSaturation = Saturation.valueOf(data[2]);
-			BloodPressure bloodPressure = BloodPressure.valueOf(data[3]);
-			Stability surfaceTemperatureStability = Stability.valueOf(data[4]);
-			Stability internalTemperatureStability = Stability.valueOf(data[5]);
-			Stability bloodPressureStability = Stability.valueOf(data[6]);
+			LevelMeasure internalTemperature = LevelMeasure.valueOf(data[0]);
+			LevelMeasure surfaceTemperature = LevelMeasure.valueOf(data[1]);
+			QualityMeasure oxygenSaturation = QualityMeasure.valueOf(data[2]);
+			LevelMeasure bloodPressure = LevelMeasure.valueOf(data[3]);
+			StabilityMeasure surfaceTemperatureStability = StabilityMeasure.valueOf(data[4]);
+			StabilityMeasure internalTemperatureStability = StabilityMeasure.valueOf(data[5]);
+			StabilityMeasure bloodPressureStability = StabilityMeasure.valueOf(data[6]);
 			DischargeDecision dischargeDecision = DischargeDecision.valueOf(data[8]);
 
 			Patient patient = new Patient(internalTemperature, surfaceTemperature, oxygenSaturation, bloodPressure,
