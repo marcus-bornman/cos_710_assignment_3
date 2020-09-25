@@ -1,4 +1,4 @@
-package gp.nodes;
+package gp.nodes.terminal;
 
 import ec.EvolutionState;
 import ec.Problem;
@@ -12,7 +12,7 @@ import model.DischargeDecision;
 /**
  * This class models the leaf node that results in a prediction that the patient should be sent to Intensive Care Unit.
  */
-public class I extends GPNode {
+public class IntensiveCare extends GPNode {
 	@Override
 	public String toString() {
 		return "I";

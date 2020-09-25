@@ -1,4 +1,4 @@
-package gp.nodes;
+package gp.nodes.terminal;
 
 import ec.EvolutionState;
 import ec.Problem;
@@ -10,18 +10,18 @@ import gp.problem.Prediction;
 import model.DischargeDecision;
 
 /**
- * This class models the leaf node that results in a prediction that the patient should be prepared to go home.
+ * This class models the leaf node that results in a prediction that the patient should be sent to general hospital floor.
  */
-public class S extends GPNode {
+public class GeneralHospital extends GPNode {
 	@Override
 	public String toString() {
-		return "S";
+		return "A";
 	}
 
 	@Override
 	public void eval(EvolutionState evolutionState, int i, GPData gpData, ADFStack adfStack, GPIndividual gpIndividual, Problem problem) {
 		Prediction data = ((Prediction) (gpData));
 
-		data.dischargeDecision = DischargeDecision.S;
+		data.dischargeDecision = DischargeDecision.A;
 	}
 }
