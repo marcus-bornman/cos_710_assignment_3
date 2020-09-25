@@ -5,4 +5,4 @@ package model;
  *      excellent (>= 98), good (>= 90 and < 98),
  *      fair (>= 80 and < 90), poor (< 80)
  */
-public enum Saturation {excellent, good, fair, poor}
+public enum QualityMeasure {excellent, good, fair, poor}
