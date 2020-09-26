@@ -12,60 +12,59 @@ gp.fs.size = 1
 gp.fs.0 = ec.gp.GPFunctionSet
 gp.fs.0.name = f0
 
-gp.fs.0.size = 8
-gp.fs.0.func.0 = gp.nodes.R
+gp.fs.0.size = 10
+gp.fs.0.func.0 = gp.nodes.terminal.GeneralHospital
 gp.fs.0.func.0.nc = nc0
-gp.fs.0.func.1 = gp.nodes.Confirmed
-gp.fs.0.func.1.nc = nc1
-gp.fs.0.func.2 = gp.nodes.Deaths
-gp.fs.0.func.2.nc = nc1
-gp.fs.0.func.3 = gp.nodes.Recovered
-gp.fs.0.func.3.nc = nc1
-gp.fs.0.func.4 = gp.nodes.Add
-gp.fs.0.func.4.nc = nc2
-gp.fs.0.func.5 = gp.nodes.Divide
-gp.fs.0.func.5.nc = nc2
-gp.fs.0.func.6 = gp.nodes.Multiply
-gp.fs.0.func.6.nc = nc2
-gp.fs.0.func.7 = gp.nodes.Subtract
-gp.fs.0.func.7.nc = nc2
+gp.fs.0.func.1 = gp.nodes.terminal.IntensiveCare
+gp.fs.0.func.1.nc = nc0
+gp.fs.0.func.2 = gp.nodes.terminal.SendHome
+gp.fs.0.func.2.nc = nc0
+gp.fs.0.func.3 = gp.nodes.internal.BloodPressure
+gp.fs.0.func.3.nc = nc3
+gp.fs.0.func.4 = gp.nodes.internal.BloodPressureStability
+gp.fs.0.func.4.nc = nc3
+gp.fs.0.func.5 = gp.nodes.internal.InternalTemperature
+gp.fs.0.func.5.nc = nc3
+gp.fs.0.func.6 = gp.nodes.internal.InternalTemperatureStability
+gp.fs.0.func.6.nc = nc3
+gp.fs.0.func.7 = gp.nodes.internal.SurfaceTemperature
+gp.fs.0.func.7.nc = nc3
+gp.fs.0.func.8 = gp.nodes.internal.SurfaceTemperatureStability
+gp.fs.0.func.8.nc = nc3
+gp.fs.0.func.9 = gp.nodes.internal.OxygenSaturation
+gp.fs.0.func.9.nc = nc4
 
-gp.type.a.size = 2
+gp.type.a.size = 1
 gp.type.a.0.name = nil
-gp.type.a.1.name = R
-gp.type.s.size = 1
-gp.type.s.0.name = R-or-nil
-gp.type.s.0.size = 2
-gp.type.s.0.member.0 = R
-gp.type.s.0.member.1 = nil
 
 gp.nc.size = 3
 gp.nc.0 = ec.gp.GPNodeConstraints
 gp.nc.0.name = nc0
-gp.nc.0.returns = R
+gp.nc.0.returns = nil
 gp.nc.0.size = 0
 gp.nc.1 = ec.gp.GPNodeConstraints
-gp.nc.1.name = nc1
+gp.nc.1.name = nc3
 gp.nc.1.returns = nil
 gp.nc.1.size = 1
-gp.nc.1.child.0 = R
+gp.nc.1.size = 3
+gp.nc.1.child.0 = nil
+gp.nc.1.child.1 = nil
+gp.nc.1.child.2 = nil
 gp.nc.2 = ec.gp.GPNodeConstraints
-gp.nc.2.name = nc2
+gp.nc.2.name = nc4
 gp.nc.2.returns = nil
-gp.nc.2.size = 2
-gp.nc.2.child.0 = R-or-nil
-gp.nc.2.child.1 = R-or-nil
+gp.nc.2.size = 4
+gp.nc.2.child.0 = nil
+gp.nc.2.child.1 = nil
+gp.nc.2.child.2 = nil
+gp.nc.2.child.3 = nil
 
 # ========================================== Chromosomes
 
 pop.subpop.0.species.ind = ec.gp.GPIndividual
-pop.subpop.0.species.ind.numtrees = 3
+pop.subpop.0.species.ind.numtrees = 1
 pop.subpop.0.species.ind.tree.0 = ec.gp.GPTree
 pop.subpop.0.species.ind.tree.0.tc = tc0
-pop.subpop.0.species.ind.tree.1 = ec.gp.GPTree
-pop.subpop.0.species.ind.tree.1.tc = tc0
-pop.subpop.0.species.ind.tree.2 = ec.gp.GPTree
-pop.subpop.0.species.ind.tree.2.tc = tc0
 
 gp.tc.size = 1
 gp.tc.0 = ec.gp.GPTreeConstraints
@@ -80,7 +79,7 @@ gp.tc.0.init = ec.gp.koza.HalfBuilder
 pop = 					    ec.Population
 pop.subpops =				1
 pop.subpop.0 = 				ec.Subpopulation
-pop.subpop.0.size =			2048
+pop.subpop.0.size =			1024
 pop.subpop.0.duplicate-retries =	100
 pop.subpop.0.species = ec.gp.GPSpecies
 pop.subpop.0.species.pipe = ec.breed.MultiBreedingPipeline
@@ -98,7 +97,7 @@ pop.subpop.0.species.pipe.source.2.prob = 0.05
 
 # ========================================== Genetic Operators
 
-generations =				256
+generations =				128
 
 gp.koza.half.min-depth = 2
 gp.koza.half.max-depth = 8
@@ -110,15 +109,15 @@ gp.koza.xover.source.0 = ec.select.TournamentSelection
 gp.koza.xover.source.1 = same
 gp.koza.xover.ns.0 = ec.gp.koza.KozaNodeSelector
 gp.koza.xover.ns.1 = same
-gp.koza.xover.maxdepth = 16
+gp.koza.xover.maxdepth = 24
 gp.koza.xover.tries = 1
 
 gp.koza.mutate.source.0 = ec.select.TournamentSelection
 gp.koza.mutate.ns.0 = ec.gp.koza.KozaNodeSelector
 gp.koza.mutate.build.0 = ec.gp.koza.GrowBuilder
-gp.koza.mutate.maxdepth = 16
+gp.koza.mutate.maxdepth = 24
 gp.koza.mutate.tries = 1
-select.tournament.size = 256
+select.tournament.size = 128
 
 gp.koza.grow.min-depth = 5
 gp.koza.grow.max-depth = 5
@@ -130,7 +129,7 @@ gp.koza.ns.root = 0.0
 
 
 # ========================================== The problem to evaluate
-eval.problem = problem.CovidProblem
+eval.problem = gp.problem.PostOperativeProblem
 eval.problem.data = gp.problem.Prediction
 
 # ========================================== Other
