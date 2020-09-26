@@ -41,7 +41,7 @@ public class PostOperativeProblem extends GPProblem implements SimpleProblemForm
 	 */
 	public PostOperativeProblem() throws IOException {
 		super();
-		patients = new PatientReader().readFromFile("training_data.csv");
+		patients = new PatientReader().readFromFile("/training_data.csv");
 	}
 
 	@Override
@@ -57,14 +57,14 @@ public class PostOperativeProblem extends GPProblem implements SimpleProblemForm
 	public void evaluate(final EvolutionState state, final Individual ind, final int subpopulation, final int threadnum) {
 		if (ind.evaluated) return;
 
-		Prediction predictionData = (Prediction) (this.input);
+		Prediction prediction = (Prediction) (this.input);
 
 		int correctTrainingPredictions = 0;
 		for (Patient patient : patients) {
 			this.patient = patient;
-			((GPIndividual) ind).trees[0].child.eval(state, threadnum, predictionData, stack, ((GPIndividual) ind), this);
+			((GPIndividual) ind).trees[0].child.eval(state, threadnum, prediction, stack, ((GPIndividual) ind), this);
 
-			if (predictionData.dischargeDecision == patient.dischargeDecision) correctTrainingPredictions++;
+			if (prediction.dischargeDecision == patient.dischargeDecision) correctTrainingPredictions++;
 		}
 
 		((KozaFitness) ind.fitness).setStandardizedFitness(state, ((double) correctTrainingPredictions) / patients.size());
