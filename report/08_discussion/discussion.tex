@@ -1,0 +1,13 @@
+\section{Discussion}
+Whereas little other research has been devoted to applying genetic programming in the context of the post-operative patient data set, there have been other classifiers used to attempt to solve the classification problem.
+
+Firstly, Owen \cite{owen1999tubular} applied multiple nearest-neighbor approaches to the problem, with the best performant approach achieving an accuracy of 75.8\% using 88 cases (2 cases were not used due to the presence of null values).
+
+Secondly, Luukka \cite{luukka2009pca} explored the use of an expert system to determine - based on hypothermia condition - whether patients in a post-operative recovery area should be sent to Intensive Care
+Unit, general hospital floor or go home. The reported results indicate that the system provides a mean classification accuracy of 62.7\%.
+
+Finally, a comparative study of different classification techniques for the post operative patient data set \cite{dash2013comparative} explored various classification problems to the data set. The best of these approaches, referred to in the study as \emph{FuzzyRoughNN}, achieved a classification accuracy of 88.88\%.
+
+When compared to the results discussed above, the classifiers produced by the genetic programming approach applied for this assignment perform relatively well. For instance, the fittest individual achieved a classification accuracy of 87.14\% on the training data and an accuracy of 82.22\% on the entire data set. Whilst results may seem less optimistic when considering that the best accuracy achieved on unseen data was 75.00\%, indicators are still positive that - with additional parameter tuning - better results can be achieved.
+
+While this initial experimentation has proved promising, additional research is still necessary to determine whether a genetic programming approach can produce a classifier which achieves better accuracy than the \emph{FuzzyRoughNN} \cite{dash2013comparative} algorithm. Such research may explore the application of a GP approach using a larger data set which may lend itself better to the evolutionary approach.
