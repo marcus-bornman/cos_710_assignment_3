@@ -48,6 +48,7 @@
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>training_data.csv</include>
+                    <include>testing_data.csv</include>
                 </includes>
             </resource>
         </resources>
