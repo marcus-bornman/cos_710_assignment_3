@@ -64,10 +64,11 @@ public class PostOperativeProblem extends GPProblem implements SimpleProblemForm
 			this.patient = patient;
 			((GPIndividual) ind).trees[0].child.eval(state, threadnum, prediction, stack, ((GPIndividual) ind), this);
 
-			if (prediction.dischargeDecision == patient.dischargeDecision) correctTrainingPredictions++;
+			if (prediction.dischargeDecision.equals(patient.dischargeDecision)) correctTrainingPredictions++;
 		}
 
-		((KozaFitness) ind.fitness).setStandardizedFitness(state, ((double) correctTrainingPredictions) / patients.size());
+		double fitness = 1 - (((double) correctTrainingPredictions) / patients.size());
+		((KozaFitness) ind.fitness).setStandardizedFitness(state, fitness);
 		((KozaFitness) ind.fitness).hits = correctTrainingPredictions;
 		ind.evaluated = true;
 	}
