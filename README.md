@@ -1,11 +1,14 @@
 [![University of Pretoria](https://www.up.ac.za/themes/up2.0/images/horizontal-logo.png)]()
 
-# COS710 Assignment 1
+# COS710 Assignment 2
 
 > This assignment involves employing genetic programming to produce a classifier for postoperative patient diagnosis.
 
-<object data="https://github.com/marcus-bornman/cos_710_assignment_2/raw/master/specification.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.com/marcus-bornman/cos_710_assignment_2/raw/master/specification.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/marcus-bornman/cos_710_assignment_2/raw/master/specification.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+## Overview
+
+This assignment was completed as part of the COS710 (Artificial Intelligence) Honours module at the University of Pretoria.
+The specification for the assignment can be found [here](specification.pdf). In addition, the report compiled for the submission
+of the assignment can be found [in the report folder](report/report.pdf), along with the latex source files used to compile the report.
+
+To reproduce the results mentioned in the report, simply run one of the `reproduce.sh` scripts available in the `combo_1_results`, `combo_2_results`
+or `combo_3_results` folders, dependent on which combination of genetic algorithm parameters you want to run the tests for.
