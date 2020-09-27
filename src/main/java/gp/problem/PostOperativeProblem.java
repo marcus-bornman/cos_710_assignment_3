@@ -11,11 +11,7 @@ import model.Patient;
 import model.PatientReader;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class is used for the genetic programming problem that we are solving.
@@ -24,9 +20,14 @@ public class PostOperativeProblem extends GPProblem implements SimpleProblemForm
 	private static final long serialVersionUID = 1;
 
 	/**
-	 * The list of patients to use.
+	 * The list of patients to use for training.
 	 */
-	public final List<Patient> patients;
+	public final List<Patient> trainingPatients;
+
+	/**
+	 * The list of patients to use for testing.
+	 */
+	public final List<Patient> testingPatients;
 
 	/**
 	 * The current patient to consider.
@@ -41,7 +42,9 @@ public class PostOperativeProblem extends GPProblem implements SimpleProblemForm
 	 */
 	public PostOperativeProblem() throws IOException {
 		super();
-		patients = new PatientReader().readFromFile("/training_data.csv");
+		PatientReader reader = new PatientReader();
+		trainingPatients = reader.readFromFile("/training_data.csv");
+		testingPatients = reader.readFromFile("/testing_data.csv");
 	}
 
 	@Override
@@ -57,20 +60,27 @@ public class PostOperativeProblem extends GPProblem implements SimpleProblemForm
 	public void evaluate(final EvolutionState state, final Individual ind, final int subpopulation, final int threadnum) {
 		if (ind.evaluated) return;
 
+		int correctTrainingPredictions = correctPredictions(state, (GPIndividual) ind, threadnum, trainingPatients);
+		int correctTestingPredictions = correctPredictions(state, (GPIndividual) ind, threadnum, testingPatients);
+
+		double fitness = 1 - (((double) correctTrainingPredictions) / trainingPatients.size());
+		((KozaFitness) ind.fitness).setStandardizedFitness(state, fitness);
+		((KozaFitness) ind.fitness).hits = correctTestingPredictions;
+		ind.evaluated = true;
+	}
+
+	private int correctPredictions(EvolutionState state, GPIndividual ind, int threadnum, List<Patient> patients) {
 		Prediction prediction = (Prediction) (this.input);
 
-		int correctTrainingPredictions = 0;
+		int correctPredictions = 0;
 		for (Patient patient : patients) {
 			this.patient = patient;
-			((GPIndividual) ind).trees[0].child.eval(state, threadnum, prediction, stack, ((GPIndividual) ind), this);
+			ind.trees[0].child.eval(state, threadnum, prediction, stack, ind, this);
 
-			if (prediction.dischargeDecision.equals(patient.dischargeDecision)) correctTrainingPredictions++;
+			if (prediction.dischargeDecision.equals(patient.dischargeDecision)) correctPredictions++;
 		}
 
-		double fitness = 1 - (((double) correctTrainingPredictions) / patients.size());
-		((KozaFitness) ind.fitness).setStandardizedFitness(state, fitness);
-		((KozaFitness) ind.fitness).hits = correctTrainingPredictions;
-		ind.evaluated = true;
+		return correctPredictions;
 	}
 }
 
