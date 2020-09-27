@@ -63,8 +63,8 @@ public class PostOperativeProblem extends GPProblem implements SimpleProblemForm
 		int correctTrainingPredictions = correctPredictions(state, (GPIndividual) ind, threadnum, trainingPatients);
 		int correctTestingPredictions = correctPredictions(state, (GPIndividual) ind, threadnum, testingPatients);
 
-		double fitness = 1 - (((double) correctTrainingPredictions) / trainingPatients.size());
-		((KozaFitness) ind.fitness).setStandardizedFitness(state, fitness);
+		double incorrectTrainingPredictions = trainingPatients.size() - correctTrainingPredictions;
+		((KozaFitness) ind.fitness).setStandardizedFitness(state, incorrectTrainingPredictions);
 		((KozaFitness) ind.fitness).hits = correctTestingPredictions;
 		ind.evaluated = true;
 	}
