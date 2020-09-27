@@ -79,7 +79,7 @@ gp.tc.0.init = ec.gp.koza.HalfBuilder
 pop = 					    ec.Population
 pop.subpops =				1
 pop.subpop.0 = 				ec.Subpopulation
-pop.subpop.0.size =			1024
+pop.subpop.0.size =			2048
 pop.subpop.0.duplicate-retries =	100
 pop.subpop.0.species = ec.gp.GPSpecies
 pop.subpop.0.species.pipe = ec.breed.MultiBreedingPipeline
@@ -88,19 +88,19 @@ pop.subpop.0.species.fitness = ec.gp.koza.KozaFitness
 
 pop.subpop.0.species.pipe.num-sources = 3
 pop.subpop.0.species.pipe.source.0 = ec.gp.koza.CrossoverPipeline
-pop.subpop.0.species.pipe.source.0.prob = 0.9
+pop.subpop.0.species.pipe.source.0.prob = 0.8
 pop.subpop.0.species.pipe.source.1 = ec.gp.koza.MutationPipeline
-pop.subpop.0.species.pipe.source.1.prob = 0.05
+pop.subpop.0.species.pipe.source.1.prob = 0.1
 pop.subpop.0.species.pipe.source.2 = ec.breed.ReproductionPipeline
-pop.subpop.0.species.pipe.source.2.prob = 0.05
+pop.subpop.0.species.pipe.source.2.prob = 0.1
 
 
 # ========================================== Genetic Operators
 
-generations =				128
+generations =				256
 
 gp.koza.half.min-depth = 2
-gp.koza.half.max-depth = 8
+gp.koza.half.max-depth = 4
 gp.koza.half.growp = 0.5
 
 breed.reproduce.source.0 = ec.select.TournamentSelection
@@ -109,15 +109,15 @@ gp.koza.xover.source.0 = ec.select.TournamentSelection
 gp.koza.xover.source.1 = same
 gp.koza.xover.ns.0 = ec.gp.koza.KozaNodeSelector
 gp.koza.xover.ns.1 = same
-gp.koza.xover.maxdepth = 24
-gp.koza.xover.tries = 1
+gp.koza.xover.maxdepth = 16
+gp.koza.xover.tries = 10
 
 gp.koza.mutate.source.0 = ec.select.TournamentSelection
 gp.koza.mutate.ns.0 = ec.gp.koza.KozaNodeSelector
 gp.koza.mutate.build.0 = ec.gp.koza.GrowBuilder
-gp.koza.mutate.maxdepth = 24
-gp.koza.mutate.tries = 1
-select.tournament.size = 128
+gp.koza.mutate.maxdepth = 16
+gp.koza.mutate.tries = 10
+select.tournament.size = 16
 
 gp.koza.grow.min-depth = 5
 gp.koza.grow.max-depth = 5
