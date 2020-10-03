@@ -2,11 +2,12 @@
 
 # COS710 Assignment 2
 
-> This assignment involves employing genetic programming to produce a classifier for postoperative patient diagnosis.
+> This assignment involves comparing the performance of a single-point selection perturbative hyper-heuristic and 
+> multipoint selection perturbative hyper-heuristic for solving the examination timetabling problem.
 
 ## Overview
 
-This assignment was completed as part of the COS710 (Artificial Intelligence) Honours module at the University of Pretoria.
+This assignment was completed as part of the COS790 (Hyper-Heuristics) Honours module at the University of Pretoria.
 The specification for the assignment can be found [here](specification.pdf). In addition, the report compiled for the submission
 of the assignment can be found [in the report folder](report/report.pdf), along with the latex source files used to compile the report.
 
