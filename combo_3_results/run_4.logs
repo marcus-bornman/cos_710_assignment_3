@@ -539,4 +539,4 @@ Generation 255	Evaluations So Far 522240
 Subpop 0 best fitness of generation Fitness: Standardized=14.0 Adjusted=0.06666666666666667 Hits=16
 Total Evaluations 524288
 Subpop 0 best fitness of run: Fitness: Standardized=14.0 Adjusted=0.06666666666666667 Hits=15
-java -jar target/cos_710_assignment_2-1.0-SNAPSHOT-jar-with-dependencies.jar   47.60s user 2.28s system 415% cpu 12.000 total
+java -jar target/cos_710_assignment_3-1.0-SNAPSHOT-jar-with-dependencies.jar   47.60s user 2.28s system 415% cpu 12.000 total
