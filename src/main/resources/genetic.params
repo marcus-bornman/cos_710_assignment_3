@@ -8,11 +8,11 @@ seed.3 =				time
 
 
 # ========================================== Genes
-gp.fs.size = 1
+gp.fs.size = 4
+
 gp.fs.0 = ec.gp.GPFunctionSet
 gp.fs.0.name = f0
-
-gp.fs.0.size = 10
+gp.fs.0.size = 11
 gp.fs.0.func.0 = gp.nodes.terminal.GeneralHospital
 gp.fs.0.func.0.nc = nc0
 gp.fs.0.func.1 = gp.nodes.terminal.IntensiveCare
@@ -33,6 +33,52 @@ gp.fs.0.func.8 = gp.nodes.internal.SurfaceTemperatureStability
 gp.fs.0.func.8.nc = nc3
 gp.fs.0.func.9 = gp.nodes.internal.OxygenSaturation
 gp.fs.0.func.9.nc = nc4
+gp.fs.0.func.10 = ec.gp.ADF
+gp.fs.0.func.10.nc = nc0
+gp.fs.0.func.10.tree = 1
+gp.fs.0.func.10.name = ADF1
+
+gp.fs.1 = ec.gp.GPFunctionSet
+gp.fs.1.name = f1
+gp.fs.1.size = 5
+gp.fs.1.func.0 = gp.nodes.terminal.GeneralHospital
+gp.fs.1.func.0.nc = nc0
+gp.fs.1.func.1 = gp.nodes.terminal.IntensiveCare
+gp.fs.1.func.1.nc = nc0
+gp.fs.1.func.2 = gp.nodes.terminal.SendHome
+gp.fs.1.func.2.nc = nc0
+gp.fs.1.func.3 = gp.nodes.internal.BloodPressure
+gp.fs.1.func.3.nc = nc3
+gp.fs.1.func.4 = gp.nodes.internal.BloodPressureStability
+gp.fs.1.func.4.nc = nc3
+
+gp.fs.2 = ec.gp.GPFunctionSet
+gp.fs.2.name = f2
+gp.fs.2.size = 5
+gp.fs.2.func.0 = gp.nodes.terminal.GeneralHospital
+gp.fs.2.func.0.nc = nc0
+gp.fs.2.func.1 = gp.nodes.terminal.IntensiveCare
+gp.fs.2.func.1.nc = nc0
+gp.fs.2.func.2 = gp.nodes.terminal.SendHome
+gp.fs.2.func.2.nc = nc0
+gp.fs.2.func.3 = gp.nodes.internal.InternalTemperature
+gp.fs.2.func.3.nc = nc3
+gp.fs.2.func.4 = gp.nodes.internal.InternalTemperatureStability
+gp.fs.2.func.4.nc = nc3
+
+gp.fs.3 = ec.gp.GPFunctionSet
+gp.fs.3.name = f3
+gp.fs.3.size = 5
+gp.fs.3.func.0 = gp.nodes.terminal.GeneralHospital
+gp.fs.3.func.0.nc = nc0
+gp.fs.3.func.1 = gp.nodes.terminal.IntensiveCare
+gp.fs.3.func.1.nc = nc0
+gp.fs.3.func.2 = gp.nodes.terminal.SendHome
+gp.fs.3.func.2.nc = nc0
+gp.fs.3.func.3 = gp.nodes.internal.SurfaceTemperature
+gp.fs.3.func.3.nc = nc3
+gp.fs.3.func.4 = gp.nodes.internal.SurfaceTemperatureStability
+gp.fs.3.func.4.nc = nc3
 
 gp.type.a.size = 1
 gp.type.a.0.name = nil
@@ -45,7 +91,6 @@ gp.nc.0.size = 0
 gp.nc.1 = ec.gp.GPNodeConstraints
 gp.nc.1.name = nc3
 gp.nc.1.returns = nil
-gp.nc.1.size = 1
 gp.nc.1.size = 3
 gp.nc.1.child.0 = nil
 gp.nc.1.child.1 = nil
@@ -62,16 +107,41 @@ gp.nc.2.child.3 = nil
 # ========================================== Chromosomes
 
 pop.subpop.0.species.ind = ec.gp.GPIndividual
-pop.subpop.0.species.ind.numtrees = 1
+pop.subpop.0.species.ind.numtrees = 4
 pop.subpop.0.species.ind.tree.0 = ec.gp.GPTree
 pop.subpop.0.species.ind.tree.0.tc = tc0
+pop.subpop.0.species.ind.tree.1 = ec.gp.GPTree
+pop.subpop.0.species.ind.tree.1.tc = tc1
+pop.subpop.0.species.ind.tree.2 = ec.gp.GPTree
+pop.subpop.0.species.ind.tree.2.tc = tc2
+pop.subpop.0.species.ind.tree.3 = ec.gp.GPTree
+pop.subpop.0.species.ind.tree.3.tc = tc3
 
-gp.tc.size = 1
+gp.tc.size = 4
+
 gp.tc.0 = ec.gp.GPTreeConstraints
 gp.tc.0.name = tc0
 gp.tc.0.fset = f0
 gp.tc.0.returns = nil
 gp.tc.0.init = ec.gp.koza.HalfBuilder
+
+gp.tc.1 = ec.gp.GPTreeConstraints
+gp.tc.1.name = tc1
+gp.tc.1.fset = f1
+gp.tc.1.returns = nil
+gp.tc.1.init = ec.gp.koza.HalfBuilder
+
+gp.tc.2 = ec.gp.GPTreeConstraints
+gp.tc.2.name = tc2
+gp.tc.2.fset = f2
+gp.tc.2.returns = nil
+gp.tc.2.init = ec.gp.koza.HalfBuilder
+
+gp.tc.3 = ec.gp.GPTreeConstraints
+gp.tc.3.name = tc3
+gp.tc.3.fset = f3
+gp.tc.3.returns = nil
+gp.tc.3.init = ec.gp.koza.HalfBuilder
 
 
 # ========================================== Population
