@@ -1,40 +1,35 @@
 \section{Results}
-Firstly, the machine used for development and testing purposes was a 2015 15-inch Macbook Pro with a 2.5 GHz Quad-Core Intel Core i7 processor, 16GB of memory and 500GB of storage. At the time of experimentation the machine had a battery cycle count of 684.
+Firstly, the machine used for development and producing results was a 2015 15-inch Macbook Pro with a 2.5 GHz Quad-Core Intel Core i7 processor, 16GB of memory, 500GB of storage and a battery cycle count of 704.
 
-As has been mentioned, the data set used for training and testing can be found at \url{https://archive.ics.uci.edu/ml/datasets/Post-Operative+Patient}. Importantly, the data set was split into a training set of 70 patients, used for the execution of the genetic algorithm, and an evaluation set of 20 patients, kept for testing generalization.
-
-To run tests a script was written which would run the algorithm on the training set with 10 different sets of seeds whilst also testing the best individuals against the evaluation set. The script is available in the github repository for this project (available at \url{https://github.com/marcus-bornman/cos_710_assignment_3}). The results for the 10 test runs can be seen in table \ref{tab:test_results}.
+As has been mentioned, the data set used for training and testing was randomly split into a training set of 70 patients and an evaluation set of 20 patients. To run tests a script was written which would run the algorithm on the training set with 10 different sets of seeds whilst also testing the best individuals against the evaluation set. The script is available in the github repository for this project (available at \url{https://github.com/marcus-bornman/cos_710_assignment_3}). The results for the 10 test runs can be seen in table \ref{tab:test_results} while the best, average and standard deviation of the accuracy for training and accuracy for testing are summarized in table \ref{tab:classification_accuracy}.
 
 \begin{table}[H]
 \resizebox{\textwidth}{!}{\begin{tabular}{|c|c|c|c|}
 \hline
-\textbf{Run} & \textbf{\begin{tabular}[c]{@{}c@{}}Correct \\ Training Classifications\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Correct\\ Evaluation Classifications\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Correct\\ Overall Classifications\end{tabular}} \\ \hline
-\textbf{1}   & 59                                                                                   & 15                                                                                    & 74                                                                                 \\ \hline
-\textbf{2}   & 55                                                                                   & 14                                                                                    & 69                                                                                 \\ \hline
-\textbf{3}   & 55                                                                                   & 14                                                                                    & 69                                                                                 \\ \hline
-\textbf{4}   & 56                                                                                   & 13                                                                                    & 69                                                                                 \\ \hline
-\textbf{5}   & 60                                                                                   & 13                                                                                    & 73                                                                                 \\ \hline
-\rowcolor[HTML]{32CB00} 
-\textbf{6}   & 61                                                                                   & 13                                                                                    & 74                                                                                 \\ \hline
-\textbf{7}   & 60                                                                                   & 14                                                                                    & 74                                                                                 \\ \hline
-\textbf{8}   & 60                                                                                   & 10                                                                                    & 70                                                                                 \\ \hline
-\textbf{9}   & 60                                                                                   & 14                                                                                    & 74                                                                                 \\ \hline
-\textbf{10}  & 60                                                                                   & 12                                                                                    & 72                                                                                 \\ \hline
+\textbf{Run} & \textbf{\begin{tabular}[c]{@{}c@{}}Correct\\ Training Classifications\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Correct\\ Evaluation Classifications\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Correct\\ Overall Classifications\end{tabular}} \\ \hline
+1            & 55                                                                                  & 13                                                                                    & 68                                                                                 \\ \hline
+2            & 50                                                                                  & 16                                                                                    & 66                                                                                 \\ \hline
+3            & 59                                                                                  & 11                                                                                    & 70                                                                                 \\ \hline
+4            & 57                                                                                  & 15                                                                                    & 72                                                                                 \\ \hline
+5            & 55                                                                                  & 16                                                                                    & 71                                                                                 \\ \hline
+6            & 53                                                                                  & 16                                                                                    & 69                                                                                 \\ \hline
+7            & 60                                                                                  & 12                                                                                    & 72                                                                                 \\ \hline
+8            & 56                                                                                  & 11                                                                                    & 67                                                                                 \\ \hline
+9            & 55                                                                                  & 14                                                                                    & 69                                                                                 \\ \hline
+10           & 58                                                                                  & 15                                                                                    & 73                                                                                 \\ \hline
 \end{tabular}}
 \caption{Test Results}
 \label{tab:test_results}
 \end{table}
 
-As deduced from the results in table \ref{tab:test_results}, the best, average and standard deviation of the accuracy for training and accuracy for testing are depicted in table \ref{tab:classification_accuracy}.
-
 \begin{table}[H]
 \resizebox{\textwidth}{!}{\begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{}               & \textbf{Average Accuracy} & \textbf{Best Accuracy} & \textbf{Standard Deviation} \\ \hline
-\textbf{Training Set}   & 83.71\%                   & 87.14\%                & 3.14\%                      \\ \hline
-\textbf{Evaluation Set} & 66.00\%                   & 75.00\%                & 6.63\%                      \\ \hline
-\textbf{Overall}        & 79.77\%                   & 82.22\%                & 2.43\%                      \\ \hline
+\textbf{Training Set}   & 79.71\%                   & 85.71\%                & 3.99\%                      \\ \hline
+\textbf{Evaluation Set} & 69.50\%                   & 80.00\%                & 9.60\%                      \\ \hline
+\textbf{Overall}        & 77.44\%                   & 81.11\%                & 2.43\%                      \\ \hline
 \end{tabular}}
-\caption{Classification Accuracy}
+\caption{Classification Accuracy After Modularization}
 \label{tab:classification_accuracy}
 \end{table}

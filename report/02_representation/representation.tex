@@ -1,18 +1,14 @@
 \section{Representation}
 
 \subsection{Nodes}
-The possible nodes for each individual, or decision tree, comprise decision nodes and end nodes. Decision nodes take a certain number of children and select one of the children based on the value of one of the patient's attributes. End nodes represent one of the three available discharge decisions.
-
-There are 7 decision nodes - one for each available patient attribute. The number of children for each decision node is dependent on the number of possible values for the associated attribute. The Internal Temperature (\emph{IT}) node, for instance, accepts 3 children - the first is selected when the patient's internal temperature is \emph{low}, the second when it is \emph{mid} and the third when it is \emph{high}.
-
-In addition, there are 3 end nodes - \emph{I}, \emph{S} and \emph{A}. These end nodes, as well as the aforementioned decision nodes, are described in more detail in table \ref{tab:nodes}.
+Nodes for the main decision tree, or ADFs, comprise decision and end nodes. Decision nodes take a number of children and select one of them based on the value of a patient's attribute. There are 7 decision nodes - one for each attribute, excluding \emph{COMFORT} as it contains missing values. The number of children for decision nodes depends on the possible values for their associated attributes. The Blood Pressure (\emph{BP}) node, for instance, has 3 children - one for \emph{low}, one for \emph{mid} and one for \emph{high}. End nodes represent one of the three discharge decisions (\emph{I}, \emph{S} or \emph{A}); or, in the main decision-tree, end nodes may also reference one of 3 ADFs. The representation of ADFs is further explained in section \ref{sec:individuals}. The end nodes and decision nodes are described in table \ref{tab:nodes}.
 
 \begin{table}[H]
 \resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
 \hline
 \textbf{Symbol} & \textbf{Arity} & \textbf{Description}                                                                                                                                                                                                                                                                                                                                                                           \\ \hline
 IT              & 3              & \begin{tabular}[c]{@{}l@{}}The internal temperature decision node\\ - If the patient's internal temperature is low then select the first child\\ - If the patient's internal temperature is mid then select the second child\\ - If the patient's internal temperature is high then select the third child\end{tabular}                                                                        \\ \hline
-ITS             & 3              & \begin{tabular}[c]{@{}l@{}}The internal temperature stability decision node\\ - If the patient's internal temperature is unstable then select the first child\\ - If the patient's internal temperature is moderately stable then select the second child\\ - If the patient's internal temperature is stable then select the third child\end{tabular}                                         \\ \hline
+ITS             & 3              & \begin{tabular}[c]{@{}l@{}}The internal temperature stability decision node\\ - If the patient's internal temperature is unstable then select the first child\\ - If the patient's internal temperature is moderately stable then select the second child\\ If the patient's internal temperature is stable then select the third child\end{tabular}                                           \\ \hline
 ST              & 3              & \begin{tabular}[c]{@{}l@{}}The surface temperature decision node\\ - If the patient's surface temperature is low then select the first child\\ - If the patient's surface temperature is mid then select the second child\\ - If the patient's surface temperature is high then select the third child\end{tabular}                                                                            \\ \hline
 STS             & 3              & \begin{tabular}[c]{@{}l@{}}The surface temperature stability decision node\\ - If the patient's surface temperature is unstable then select the first child\\ - If the patient's surface temperature is moderately stable then select the second child\\ - If the patient's surface temperature is stable then select the third child\end{tabular}                                             \\ \hline
 BP              & 3              & \begin{tabular}[c]{@{}l@{}}The blood pressure decision node\\ - If the patient's blood pressure is low then select the first child\\ - If the patient's blood pressure is mid then select the second child\\ - If the patient's blood pressure is high then select the third child\end{tabular}                                                                                                \\ \hline
@@ -21,33 +17,31 @@ OS              & 4              & \begin{tabular}[c]{@{}l@{}}The oxygen saturat
 I               & 0              & The end node for the patient to be sent to an intensive care unit                                                                                                                                                                                                                                                                                                                              \\ \hline
 S               & 0              & The end node for the patient to be sent home                                                                                                                                                                                                                                                                                                                                                   \\ \hline
 A               & 0              & The end node for the patient to be sent to the general hospital floor                                                                                                                                                                                                                                                                                                                          \\ \hline
+ADF0            & 0              & Returns the result of executing the first ADF of the individual.                                                                                                                                                                                                                                                                                                                               \\ \hline
+ADF1            & 0              & Returns the result of executing the second ADF of the individual.                                                                                                                                                                                                                                                                                                                              \\ \hline
+ADF2            & 0              & Returns the result of executing the third ADF of the individual.                                                                                                                                                                                                                                                                                                                               \\ \hline
 \end{tabular}}
 \caption{Decision Tree Nodes}
 \label{tab:nodes}
 \end{table}
 
 \subsection{Individuals}\label{sec:individuals}
-Each chromosome within a population consists of a single decision tree for determining the discharge decision for a patient. To clarify, internal nodes indicate the attributes of a patient while links represent each of the possible values for an attribute. Given the possible nodes identified in table \ref{tab:nodes}, an example of one such decision tree is depicted in figure \ref{fig:decision_tree}.
+Each chromosome within a population consists of a 4 decision trees for determining the discharge decision for a patient. As per the architecture implemented by Bruce \cite{bruce1995application}, the first decision tree represents the main program while the other three trees represent ADFs.
 
-% minimum distance between nodes on the same line
-\setlength{\GapWidth}{1em}  
-% draw with a thick dashed line, very nice looking
-\thicklines \drawwith{\dottedline{2}}   
-% draw an oval and center it with the rule.  You may want to fool with the
-% rule values, though these seem to work quite well for me.  If you make the
-% rule smaller than the text height, then the GP nodes may not line up with
-% each other horizontally quite right, so watch out.
-\newcommand{\gpbox}[1]{\Ovalbox{#1\rule[-.7ex]{0ex}{2.7ex}}}
+The function set and terminal set for the main program are made up of all the available nodes in table \ref{tab:nodes}. For the ADFs the terminal sets all consist of only \emph{I}, \emph{S} and \emph{A} - hence, there are no references between the function-defining trees. In addition - the function set for the first ADF consists of \emph{BP} and \emph{BPS}, the function set for the second ADF consists of \emph{IT} and \emph{ITS}, and the function set for the third ADF consists of \emph{ST} and \emph{STS}.
+
+Given the function and terminal sets described above for the main program and each ADF, an example of an individual is depicted in figure \ref{fig:individual}.
 
 \begin{figure}[H]
-    \centering
-    \resizebox{\textwidth}{!}{\begin{bundle}{\gpbox{ITS}}\chunk{\begin{bundle}{\gpbox{BPS}}\chunk{\begin{bundle}{\gpbox{BP}}\chunk{\gpbox{A}}\chunk{\gpbox{A}}\chunk{\gpbox{A}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{OS}}\chunk{\gpbox{A}}\chunk{\gpbox{A}}\chunk{\gpbox{A}}\chunk{\gpbox{S}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{BPS}}\chunk{\gpbox{I}}\chunk{\gpbox{A}}\chunk{\gpbox{S}}\end{bundle}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{ST}}\chunk{\begin{bundle}{\gpbox{IT}}\chunk{\gpbox{A}}\chunk{\gpbox{I}}\chunk{\gpbox{I}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{STS}}\chunk{\gpbox{I}}\chunk{\gpbox{I}}\chunk{\gpbox{I}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{ITS}}\chunk{\gpbox{S}}\chunk{\gpbox{A}}\chunk{\gpbox{S}}\end{bundle}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{IT}}\chunk{\begin{bundle}{\gpbox{ST}}\chunk{\gpbox{A}}\chunk{\gpbox{A}}\chunk{\gpbox{A}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{ITS}}\chunk{\gpbox{S}}\chunk{\gpbox{I}}\chunk{\gpbox{A}}\end{bundle}}\chunk{\begin{bundle}{\gpbox{ITS}}\chunk{\gpbox{I}}\chunk{\gpbox{S}}\chunk{\gpbox{A}}\end{bundle}}\end{bundle}}\end{bundle}}
-    \caption{Decision Tree}
-    \label{fig:decision_tree}
+\centering
+\includegraphics[width=\textwidth]{report/02_representation/chromosome.png}
+\caption{Example of an Individual}
+\label{fig:individual}
 \end{figure}
 
+
 \subsection{Populations}
-Of course, a population consists of a collection of the individuals that have been described in section \ref{sec:individuals}. Importantly, the genetic algorithm applied only made use of a single population consisting of 2048 individuals. This means that only a single population was evolved and cross-population breeding was not applied.
+Population representation and generation is the same as that applied by the previous genetic programming approach that did not incorporate modularization. To reiterate, the genetic algorithm made use of a single population consisting of 2048 individuals. This means that only a single population was evolved and cross-population breeding was not applied.
 
 The initial population was generated using the ramped-half-and-half method proposed by Koza \cite{koza1992genetic} to enhance population diversity of structure. The maximum tree depth allowed during the initial population generation was 4. So, in other words, the population is divided equally among individuals to be initialized with trees having depths 2, 3, and 4. For each depth group, half of the trees are initialized with the full technique and half with the grow technique.
 

@@ -1,5 +1,7 @@
 \section{Fitness Function}\label{sec:fitness}
-To determine the fitness of individuals, we use the number of patients for which the decision tree classified the discharge decision incorrectly. To be more specific, for a particular patient the predicted discharge decision is determined using the decision tree of the individual in question; then, if the predicted discharge decision is not the same as the recorded discharge decision the fitness is increased by 1. This process is repeated for all patients in the training set.
+Again, fitness evaluation was applied using the same means applied by the previous genetic programming approach that did not incorporate modularization.
+
+For clarity, to determine the fitness of individuals, we use the number of patients for which the individual classified the discharge decision incorrectly. To be more specific, for a particular patient the predicted discharge decision is determined using the main decision tree of the individual in question; then, if the predicted discharge decision is not the same as the recorded discharge decision the fitness is increased by 1. This process is repeated for all patients in the training set.
 
 Of course, using this calculation for the fitness of an individual means an individual with a lower fitness value is deemed better than one with a higher fitness value. Algorithm \ref{alg:fitness} depicts the fitness function in its entirety.
 
@@ -7,7 +9,7 @@ Of course, using this calculation for the fitness of an individual means an indi
 \SetAlgoLined
  \ForEach{patient in trainingData}{
    recordedDecision = trainingData.dischargeDecision(patient)\;
-   predictedDecision = individual.decisionTree.predict(patient)\;
+   predictedDecision = individual.mainDecisionTree.predict(patient)\;
    \BlankLine
    \uIf{predictedDecision != recordedDecision}{
         numErrors++\;

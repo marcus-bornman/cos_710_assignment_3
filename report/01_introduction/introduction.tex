@@ -1,9 +1,9 @@
 \section{Introduction}
-This assignment involves employing genetic programming to produce a classifier for postoperative patient diagnosis.
+This assignment involves employing genetic programming and incorporating modularization using automatically defined functions (ADFs) to produce a classifier for postoperative patient diagnosis. In addition, the results of this approach are compared to those produced by a previous genetic programming approach that did not incorporate modularization - see \url{https://github.com/marcus-bornman/cos_710_assignment_2}.
 
-More specifically, the toolset provided by ECJ \cite{luke2006ecj} - a java-based evolutionary computation research system - was used to construct a genetic programming approach to evolve a population of decision trees for classifying postoperative patient diagnosis for the patients provided in the Post-Operative Patient Data Set, which can be obtained from the UCI Machine Learning repository \cite{Dua:2019}.
+The toolset provided by ECJ \cite{luke2006ecj} - a java-based evolutionary computation research system - was used to construct the genetic programming approach to evolve a population of arrays of trees. The first tree in each array represents the main decision-tree for classifying postoperative patient diagnosis for the patients in the Post-Operative Patient Data Set (available from the UCI Machine Learning repository \cite{Dua:2019}). The rest of the trees in each array represent ADFs.
 
-The aforementioned data set consist of 90 records, each with 9 attributes which can be described as follows:
+The aforementioned data set consist of 90 records. The data set was randomly divided into a training set of 70 records and an evaluation set of 20 records. Each record consists of 9 attributes, which can be described as follows:
 
 \begin{itemize}
     \item L-CORE (patient's internal temperature in C):
@@ -29,6 +29,6 @@ The aforementioned data set consist of 90 records, each with 9 attributes which 
               A (patient sent to general hospital floor)
 \end{itemize}
 
-The classification task of this data set is to determine where patients in a postoperative recovery area should be sent to next (the discharge decision). For this assignment, the \emph{COMFORT} attribute is not considered for the classification problem as it contains missing values. So, the classifier, in the form of a decision tree, which is produced will use 7 patient attributes to classify patient's into one of three discharge decisions.
+The classification task of this data set is to determine where patients in a postoperative recovery area should be sent to next (the discharge decision). For this assignment, the \emph{COMFORT} attribute is not considered for the classification problem as it contains missing values. So, the classifier will use 7 patient attributes to classify patient's into one of three discharge decisions.
 
-All of the code that was used to employ the genetic algorithm can be found on github at \url{https://github.com/marcus-bornman/cos_710_assignment_3}. The repository also contains all information necessary to reproduce the results that are discussed within this assignment.
+All of the code that was used to employ the genetic algorithm and the information necessary to reproduce the results can be found on github at \url{https://github.com/marcus-bornman/cos_710_assignment_3}.
