@@ -12,7 +12,7 @@ gp.fs.size = 4
 
 gp.fs.0 = ec.gp.GPFunctionSet
 gp.fs.0.name = f0
-gp.fs.0.size = 11
+gp.fs.0.size = 13
 gp.fs.0.func.0 = gp.nodes.terminal.GeneralHospital
 gp.fs.0.func.0.nc = nc0
 gp.fs.0.func.1 = gp.nodes.terminal.IntensiveCare
@@ -36,7 +36,15 @@ gp.fs.0.func.9.nc = nc4
 gp.fs.0.func.10 = ec.gp.ADF
 gp.fs.0.func.10.nc = nc0
 gp.fs.0.func.10.tree = 1
-gp.fs.0.func.10.name = ADF1
+gp.fs.0.func.10.name = ADF0
+gp.fs.0.func.11 = ec.gp.ADF
+gp.fs.0.func.11.nc = nc0
+gp.fs.0.func.11.tree = 2
+gp.fs.0.func.11.name = ADF1
+gp.fs.0.func.12 = ec.gp.ADF
+gp.fs.0.func.12.nc = nc0
+gp.fs.0.func.12.tree = 3
+gp.fs.0.func.12.name = ADF2
 
 gp.fs.1 = ec.gp.GPFunctionSet
 gp.fs.1.name = f1
