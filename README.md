@@ -2,8 +2,8 @@
 
 # COS710 Assignment 3
 
-> This assignment involves comparing the performance of a single-point selection perturbative hyper-heuristic and 
-> multipoint selection perturbative hyper-heuristic for solving the examination timetabling problem.
+> This  assignment  involves  employing  genetic  programming  and  incorporating modularization using automatically 
+> defined functions (ADFs) to produce a clas-sifier  for  postoperative  patient  diagnosis.
 
 ## Overview
 
