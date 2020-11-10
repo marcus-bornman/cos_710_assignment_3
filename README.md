@@ -76,7 +76,7 @@ This will reproduce the output for 10 test runs in the [results folder](results)
 
 <!-- ROADMAP -->
 ## Roadmap
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of other proposed features (and known issues).
+See the [open issues](https://github.com/marcus-bornman/cos_710_assignment_3/issues) for a list of other proposed features (and known issues).
 
 
 
