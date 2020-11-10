@@ -43,8 +43,8 @@ This assignment was completed as part of the COS710 (Artificial Intelligence) Ho
 and involves employing genetic programming to produce a classifier for postoperative patient diagnosis.
 
 See the following for detailed information about the project:
-* [specification.pdf](specification.pdf) - The specification for this assignment.
-* [report.pdf](report/report.pdf) - The report submitted for this assignment.
+* [specification.pdf](assets/specification.pdf) - The specification for this assignment.
+* [report.pdf](assets/report/report.pdf) - The report submitted for this assignment.
 
 ### Built With
 * [Java](https://www.java.com/en/)
@@ -65,8 +65,8 @@ mvn clean compile assembly:single
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-To reproduce the results mentioned in [the report for this assignment](report/report.pdf), you simply need to run the
-[reproduce.sh](reproduce.sh) script found in the root folder of this project:
+To reproduce the results mentioned in [the report for this assignment](assets/report/report.pdf), you simply need to run the
+[reproduce.sh](results/reproduce.sh) script found in the root folder of this project:
 ```shell script
 sh reproduce.sh
 ```
