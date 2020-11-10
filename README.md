@@ -40,7 +40,7 @@
 </p>
 
 This assignment - completed as part of the COS710 (Artificial Intelligence) Honours module at the University of Pretoria -
-involves employing genetic programming to produce a classifier for postoperative patient diagnosis.
+involves employing genetic programming with automatically defined functions to produce a classifier for postoperative patient diagnosis.
 
 See the following for detailed information about the project:
 * [specification.pdf](assets/specification.pdf) - The specification for this assignment.
